@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <main class="page event-page">
+    <section class="portfolio-block event">
+      <div class="container text-center">
+        <div class="heading">
+          <h2>Event booked! Your receipt:</h2>
+        </div>
+        <p>Receipt ID: <b>{{ data.id }}</b></p>
+        <p>Event: <b>{{ event.title }}</b></p>
+        <p>Date: <b>{{ event.date.strftime("%Y-%m-%d") }}</b></p>
+        <p>Time: <b>{{ event.date.strftime("%H:%M:%S") }}</b></p>
+
+        <a href="{{ url_for('main.homePage') }}" class="mt-5">Back to home</a>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}

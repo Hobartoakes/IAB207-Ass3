@@ -46,6 +46,9 @@ class BookEventForm(FlaskForm):
     submit = SubmitField("Place Order")
 
 
+class AddCommentForm(FlaskForm):
+    content = StringField("Content", validators=[InputRequired()])
+    submit = SubmitField("Post Comment")
 
 
 class AddEventForm(FlaskForm):

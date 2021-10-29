@@ -93,6 +93,19 @@ def bookEvent():
 
 @bp.route('/addComment', methods=['GET', 'POST'])
 @login_required
+def addComment():
+    form = AddCommentForm()
+    if form.validate_on_submit():
+        # add comment
+        db.session.add(Comment(
+            content=request.form.get('content'),
+            event=request.args.get('id'),
+            created_user=current_user.email
+        ))
+        db.session.commit()
+        return redirect(url_for('main.eventDetail') + "?id=" + request.args.get('id'))
+    return render_template('renderforms.html', form=form, formTitle='Add Comment', user=current_user)
+
 
 @bp.route('/addEvent', methods=['GET', 'POST'])
 @login_required

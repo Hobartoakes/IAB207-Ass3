@@ -37,4 +37,12 @@ class Receipt(db.Model):
     event = db.Column(db.Integer, db.ForeignKey('events.id'))
     created_user = db.Column(db.Text, db.ForeignKey('users.email'))
     created = db.Column(db.DateTime, default=datetime.datetime.now)
-    
+
+
+class Comment(db.Model):
+    __tablename__ = 'user_comments'
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text)
+    event = db.Column(db.Integer, db.ForeignKey('events.id'))
+    created_user = db.Column(db.Text, db.ForeignKey('users.email'))
+    created = db.Column(db.DateTime, default=datetime.datetime.now)

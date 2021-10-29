@@ -16,6 +16,13 @@ def create_app():
     # set the app configuration data
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sitedata.sqlite'
 
+    @app.errorhandler(404)
+    def not_found(e):
+        return render_template("404.html")
+
+    @app.errorhandler(500)
+    def internal_error(e):
+        return render_template("500.html")
 
     # initialize db with flask app
     db.init_app(app)
